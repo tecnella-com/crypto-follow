@@ -1,0 +1,161 @@
+.mainContainer{
+    background: rgb(243, 243, 243) ;
+    min-width: 350px;
+    max-width: fit-content;
+    min-height: 400px;
+    max-height: fit-content;
+    text-align:center;
+    box-shadow: 0 0 8px rgb(255, 230, 0);
+}
+
+.mainContainer .logo-cf{
+    height: 90px;
+    display: block;
+}
+.mainContainer .logo-cf img{
+    height: 100px;
+}
+.mainContainer .infoAndLicense{
+    display: block;
+    min-height: 20px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Style the buttons that are used to open and close the accordion panel-cf */
+.bodyContainer .accordion {
+    background:rgb(243, 243, 243);
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  
+/* Add a background color to the button if it is clicked on (add the .active-cf class with JS), and when you move the mouse over it (hover) */
+.bodyContainer .accordion:hover {
+    background: rgb(255, 230, 0);
+}
+  
+  
+
+.bodyContainer .accordion:after {
+    content: '\02795' ; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    text-shadow:0px 0px 5px rgb(255, 230, 0);
+    float: right;
+    margin-left: 5px;
+}
+
+/* Style the accordion panel-cf. Note: hidden by default */
+.bodyContainer .panel-cf {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+  
+.bodyContainer .active-cf{
+    background: #f5f5f5;
+}
+.bodyContainer .active-cf:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.bodyContainer .row-cf{    
+    display:block;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin-right:0px;
+    margin-left:0px;        
+}
+
+.bodyContainer .left-column-border-right{
+    display: inline-block;
+    width: 45%;
+    padding-left: 5px;
+    padding-right: 10px;        
+    border-right: 1px solid rgba(156,164,164,0.7);
+}
+.bodyContainer .right-column-border-left{
+    display: inline-block;
+    width: 45%;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+/*** Conten script element css ****/
+
+.mainBar{
+    background: #f5f5f5;
+    font-size: 14px; 
+    box-sizing: border-box; 
+    position:fixed; 
+    text-align:center; 
+    z-index: 20000; 
+    display: block;
+    width: 100%;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.8);
+}
+/* ----- Normalize ----- */
+.mainBar * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.mainBar .row-cf{    
+    display:block;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin-right:0px;
+    margin-left:0px;        
+}
+
+.mainBar .element-container{
+    display: inline-block;
+    max-width: 100%;
+    min-width: 15%;      
+}
+
+.mainBar .element-container .left-column-border-right{
+    display: inline-block;
+    width: 45%;
+    padding-left: 5px;
+    padding-right: 10px;        
+    border-right: 1px solid rgba(156,164,164,0.7);
+}
+.mainBar .element-container .right-column-border-left{
+    display: inline-block;
+    width: 45%;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.text-center{text-align:center!important}
+
+.mainBar .element-container .upColor{
+    background-color: rgba(0,255,0,0.3);
+}
+.mainBar .element-container .downColor{
+    background-color: rgba(255,0,0,0.3);
+}
+.mainBar .element-container .holdColor{
+    background-color: rgba(255,255,255,0.3);
+}
+
+.mainBar .element-container .negativeColor{
+    color: red;
+}
+
+.mainBar .element-container .positiveColor{
+    color: green;
+} 

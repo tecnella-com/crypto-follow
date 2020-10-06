@@ -1,0 +1,38 @@
+{
+  "name": "crypto-follow",
+  "version": "1.0.0",
+  "description": "A Chrome extension \"crypto follow\", let u follow crypto, fiat currency and assets always in your browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/tecnella/crypto-follow-Chrome-extension.git"
+  },
+  "keywords": [
+    "crypto",
+    "chrome",
+    "extension",
+    "training",
+    "investing",
+    "currency"
+  ],
+  "author": "Tecnella",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/tecnella/crypto-follow-chrome-extension/issues"
+  },
+  "homepage": "https://tecnella.com/",
+  "devDependencies": {
+    "@o2team/gulp-prettier-eslint": "^3.0.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-jsdoc3": "^3.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-strip-comments": "^2.5.2",
+    "jsdoc": "^3.6.5"
+  }
+}
