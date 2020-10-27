@@ -138,9 +138,9 @@ Download the "Dist Folder" and open it like developer on Chrome
 ### Install from Source-dev:
 To install you will need to use Gulp to create the Dist Folder and add it to Chrome.
 
-#### 1. Clone or download the Repository. (URL)
+#### 1. Clone or download the Repository. [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
 ``` 
-git clone (URL)
+git clone https://github.com/tecnella-com/crypto-follow.git
 ```
 It should have been download on ":~/$"
 
