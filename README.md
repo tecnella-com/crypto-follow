@@ -115,10 +115,10 @@ You have three options to install the extension, Install from "Chrome Store", In
 2. Search the pair that interests you and select it.
 3. Wait until the bar update (Approximately a minute)
 
-### Install from Dist Repository:
+### Install from Release:
 Download the "Dist Folder" and open it like developer on Chrome
 
-#### 1. Go to the Dist Repository and download the Dist Folder
+#### 1. Go to the Last Release and download the Dist Folder [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
 
 #### 2. add the extension to Chrome
 1. Open your Chrome browser.
@@ -138,9 +138,9 @@ Download the "Dist Folder" and open it like developer on Chrome
 ### Install from Source-dev:
 To install you will need to use Gulp to create the Dist Folder and add it to Chrome.
 
-#### 1. Clone or download the Repository. (URL)
+#### 1. Clone or download the Repository. [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
 ``` 
-git clone (URL)
+git clone https://github.com/tecnella-com/crypto-follow.git
 ```
 It should have been download on ":~/$"
 
