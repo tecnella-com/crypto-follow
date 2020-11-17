@@ -2,7 +2,7 @@
   "name": "Crypto follow",
   "version": "1.0.0",
   "description": "A Chrome extension that allows the visualization of assets, fiat currencies, crypto currencies, among other pairs that vary constantly, it is designed to be displayed at the top of all the pages in which you are browsing and to be updated every minute. If would be necessary, it can be hidden by double-clinking the bar.",
-  "permissions": ["activeTab","storage","declarativeContent","webNavigation"],
+  "permissions": ["activeTab","storage","webNavigation"],
   "background": {
     "scripts": 
       [
