@@ -214,7 +214,7 @@ function updateTheBar(data) {
  * @description Hide the bar temporarily and respawn at five seconds.
  * @event
  */
-function hideTheBarTemporarily() {
+function hideTheBarTemporarily(respawnTime) {
     bar.style.setProperty("display", "none", "important");
     setTimeout(() => {
         bar.style.setProperty("display", "block", "important");

@@ -31,7 +31,7 @@ setInterval(() => {
  * @fires hideTheBarTemporarily
  */
 bar.ondblclick = () => {
-    hideTheBarTemporarily();
+    hideTheBarTemporarily(respawnTime);
 };
 
 //# Resumen del archivo
