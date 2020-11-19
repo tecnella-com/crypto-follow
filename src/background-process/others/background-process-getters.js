@@ -171,34 +171,27 @@ function getDataFromBitfinex() {
 }
 
 /**
- * @function getDataFromNotilogia
- * @description do a request if __cryptoFollowConfig.vendor.notilogia.symbol__
+ * @function getDataFromBitven
+ * @description do a request if __cryptoFollowConfig.vendor.bitven.symbol__
  * is not empty, do the result scraping, and save in
  * [dataRequestedFromVendors]{@link module:background-process-setup~dataRequestedFromVendors}.
  * Also, at next try prevent the fetch and reuse the last data in __oneTimeFetch__.
  * @see [cryptoFollowConfig]{@link module:background-process-setup~cryptoFollowConfig}
  */
-function getDataFromNotilogia() {
-    if (cryptoFollowConfig.vendor.notilogia.symbol.length > 0) {
+function getDataFromBitven() {
+    if (cryptoFollowConfig.vendor.bitven.symbol.length > 0) {
         if (
-            cryptoFollowConfig.vendor.notilogia.oneTimeFetch.lastPrice
+            cryptoFollowConfig.vendor.bitven.oneTimeFetch.lastPrice
             === "Loading"
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.notilogia.urlApi)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.urlApi)
                     .then(function (data) {
-                        const dataFromTablesCenter = $(data)
-                            .find("tr>td>center")
-                            .parent()
-                            .contents();
                         const priceToday = parseInt(
-                            $(dataFromTablesCenter[1]).contents()[0].data,
+                            JSON.parse(data).USD_TO_BSF_RATE,
                             10
                         );
-                        const priceYesterday = parseInt(
-                            $(dataFromTablesCenter[3]).contents()[0].data,
-                            10
-                        );
+                        const priceYesterday = priceToday;
                         const change = priceToday - priceYesterday;
                         const changePercent = (change / priceYesterday) * 100;
                         const modelData = {
@@ -206,23 +199,23 @@ function getDataFromNotilogia() {
                             priceChangePercent: fixToSignificantDigits(changePercent),
                             lastPrice: fixToSignificantDigits(priceToday)
                         };
-                        cryptoFollowConfig.vendor.notilogia.oneTimeFetch = modelData;
+                        cryptoFollowConfig.vendor.bitven.oneTimeFetch = modelData;
                     })
                     .catch(function (error) {
                         errorHandlerFunctions.onGetPageDataFromWeb.EmptyModelCriteria(
                             error,
-                            cryptoFollowConfig.vendor.notilogia
+                            cryptoFollowConfig.vendor.bitven
                         );
                     });
             } catch (error) {
                 errorHandlerFunctions.onGetPageDataFromWeb.EmptyModelCriteria(
                     error,
-                    cryptoFollowConfig.vendor.notilogia
+                    cryptoFollowConfig.vendor.bitven
                 );
             }
         }
         dataRequestedFromVendors.data.push(
-            cryptoFollowConfig.vendor.notilogia.oneTimeFetch
+            cryptoFollowConfig.vendor.bitven.oneTimeFetch
         );
     }
 }
@@ -357,7 +350,7 @@ function getDataFromBCV() {
  * [dataRequestedFromVendors]{@link module:background-process-setup~dataRequestedFromVendors}
  * and call [getDataFromBinance]{@link module:background-process-getters~getDataFromBinance},
  * [getDataFromBitfitnex]{@link module:background-process-getters~getDataFromBitfinex},
- * [getDataFromNotilogia]{@link module:background-process-getters~getDataFromNotilogia},
+ * [getDataFromBitven]{@link module:background-process-getters~getDataFromBitven},
  * [getDataFromInvestingOil]{@link module:background-process-getters~getDataFromInvestingOil},
  * [getDataFromBCV]{@link module:background-process-getters~getDataFromBCV}
  */
@@ -367,7 +360,7 @@ function getFromVendors() {
     };
     getDataFromBinance();
     getDataFromBitfinex();
-    getDataFromNotilogia();
+    getDataFromBitven();
     getDataFromInvestingOil();
     getDataFromBCV();
 

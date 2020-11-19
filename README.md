@@ -44,6 +44,8 @@ It was a step by step process:
 
 14. __Through the Development Process we did a lot of testing and fixing__ to the code, but at this point we began to spend time in selecting a license, designing a logo, selecting the colors, improving and cleaning the code, improving the __documentation__, creating a __“READ ME”__ text, creating an __“Installation Guide”__, an __“Usage Manual”__ and fixing some details before launching the solution.
 
+15. Notilogia broken.
+
 
 ## Features
 -------------------------------------------
@@ -61,7 +63,7 @@ It was a step by step process:
 
 ### Visualization of fiat currencies like:
 * Euro vs Tether Dollar, __"EURUSDT"__ from Binances.
-* Dollar vs Bolivar, __DolarToDay.VES__ from Notilogia (DolarToDay).
+* Dollar vs Bolivar, __DolarToDay.VES__ from Bitven (DolarToDay).
 * Dollar vs Bolivar, __USD:VES.BCV__ from Venezuela’s Central Bank (Official Rate).
 
 ### Visualization of cryptocurrencies like:
@@ -93,8 +95,8 @@ It was a step by step process:
 The extension gets the data through the [binance-api](https://binance-docs.github.io/apidocs/spot/en/#introduction "Go to binances api introduction" )
 #### Bitfinex:
 The extension gets the data through the [Bitfinex-api](https://docs.bitfinex.com/docs/introduction "Go to binances api introduction" )
-#### Notilogia:
-The extension gets the data from the web portal [Notilogia.com](https://www.notilogia.com/2020/09/precio-dolar-paralelo.html "Go to notilogia hitoric price")
+#### Bitven:
+The extension gets the data from the web portal [Bitven.com](https://www.bitven.com/2020/09/precio-dolar-paralelo.html "Go to Bitven hitoric price")
 #### Investing:
 The extension gets the data from the web portal [Es.investing.com](https://es.investing.com/commodities/brent-oil-historical-data "Go to brent-oil-historical-data")
 #### Venezuela’s Central Bank:

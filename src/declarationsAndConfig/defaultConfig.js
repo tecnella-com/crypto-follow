@@ -22,20 +22,20 @@
  * - The URL to conect to the API.
  * @property {Array} vendor.bitfinex.symbol
  * - Contains the symbols that will be request.
- * @property {JSON} vendor.notilogia
- * - identification for Web's vendor Notilogia.
- * @property {String} vendor.notilogia.urlApi
+ * @property {JSON} vendor.bitven
+ * - identification for Web's vendor Bitven.
+ * @property {String} vendor.bitven.urlApi
  * - The URL that will be scraping.
- * @property {Array} vendor.notilogia.symbol
+ * @property {Array} vendor.bitven.symbol
  * - The symbol to show and if is empty disable the vendor data fetch.
- * @property {JSON} vendor.notilogia.oneTimeFetch
+ * @property {JSON} vendor.bitven.oneTimeFetch
  * - Save the vendor data, and is reused to prevent other
  * [getPageDataFromWeb]{@link module:background-process-getters~getPageDataFromWeb}
- * @property {String} vendor.notilogia.oneTimeFetch.symbol
+ * @property {String} vendor.bitven.oneTimeFetch.symbol
  * - The symbol to show
- * @property {String} vendor.notilogia.oneTimeFetch.priceChangePercent
+ * @property {String} vendor.bitven.oneTimeFetch.priceChangePercent
  * - contains pair price change percent
- * @property {String} vendor.notilogia.oneTimeFetch.lastPrice
+ * @property {String} vendor.bitven.oneTimeFetch.lastPrice
  * - contains the pair last price
  * @property {JSON} vendor.investingOil
  * - identification for Web's vendor InvestingOil.
@@ -78,15 +78,10 @@ const cryptoFollowDefaultConfig = {
             urlApi: "https://api-pub.bitfinex.com/v2/tickers?symbols=",
             symbol: ["tXAUT:USD"]
         },
-        notilogia: {
-            // https://www.notilogia.com/2020/08/precio-dolar-paralelo.html
+        bitven: {
             urlApi:
-                `https://www.notilogia.com/${
-                    new Date().getFullYear()
-                }/${
-                    String(new Date().getMonth() + 101).substring(1, 3)
-                }/precio-dolar-paralelo.html`,
-            symbol: [],
+                "https://www.bitven.com/assets/js/rates.js",
+            symbol: ["DolarToDay.VES"],
             oneTimeFetch: {
                 symbol: "DolarToDay.VES",
                 priceChangePercent: "Loading",
