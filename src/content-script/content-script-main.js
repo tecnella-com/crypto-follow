@@ -34,6 +34,12 @@ bar.ondblclick = () => {
     hideTheBarTemporarily(respawnTime);
 };
 
+bar.onmouseover = function () {
+    if (!cryptoFollowConfig.barConfig.hideMode) {
+        hideTheBarTemporarily(respawnTime);
+    }
+};
+
 //# Resumen del archivo
 //# - Ver como priorizar este archivo para no tener que agregar la Z en el nombre 
 //# - Cambiar el nombre del archivo a content-script-setup

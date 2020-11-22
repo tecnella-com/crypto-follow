@@ -8,6 +8,10 @@
 /**
  * @var {JSON} cryptoFollowDefaultConfig
  * @description the default configuration to the extension.
+ * @property {JSON} barConfig
+ * - the bar config.
+ * @property {JSON} barConfig.hideMode
+ * - if is true mean Hide the bar on: Double click, on false hide the bar on: Mouseover.
  * @property {JSON} vendor
  * - identification for vendors.
  * @property {JSON} vendor.binance
@@ -69,6 +73,9 @@
  * - contains the pair last price
  */
 const cryptoFollowDefaultConfig = {
+    barConfig: {
+        hideMode: false
+    },
     vendor: {
         binance: {
             urlApi: "https://api.binance.com/api/v3/ticker/24hr?symbol=",
