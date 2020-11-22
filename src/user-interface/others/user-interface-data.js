@@ -12,7 +12,6 @@
  * @description update the state of the switch "hide config"
  */
 function updateHideConfig(cryptoFollowLastConfig) {
-    alert(cryptoFollowLastConfig.barConfig.hideMode);
     if (cryptoFollowLastConfig.barConfig.hideMode) {
         const switchBtn = $("#switchHide");
         switchBtn.prop("checked", true);
