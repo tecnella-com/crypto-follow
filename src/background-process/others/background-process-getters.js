@@ -183,6 +183,8 @@ function getDataFromBitven() {
         if (
             cryptoFollowConfig.vendor.bitven.oneTimeFetch.lastPrice
             === "Loading"
+            || (new Date().getTime() - cryptoFollowConfig.vendor.bitven.oneTimeFetch.time)
+            >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
                 getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.urlApi)
@@ -197,7 +199,8 @@ function getDataFromBitven() {
                         const modelData = {
                             symbol: "DolarToDay.VES",
                             priceChangePercent: fixToSignificantDigits(changePercent),
-                            lastPrice: fixToSignificantDigits(priceToday)
+                            lastPrice: fixToSignificantDigits(priceToday),
+                            time: new Date().getTime()
                         };
                         cryptoFollowConfig.vendor.bitven.oneTimeFetch = modelData;
                     })
@@ -233,6 +236,8 @@ function getDataFromInvestingOil() {
         if (
             cryptoFollowConfig.vendor.investingOil.oneTimeFetch.lastPrice
             === "Loading"
+            || (new Date().getTime() - cryptoFollowConfig.vendor.investingOil.oneTimeFetch.time)
+            >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
                 getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.urlApi)
@@ -252,7 +257,8 @@ function getDataFromInvestingOil() {
                                 cryptoFollowConfig.vendor.investingOil
                                     .oneTimeFetch.symbol,
                             priceChangePercent: fixToSignificantDigits(changePercent),
-                            lastPrice: fixToSignificantDigits(priceToday)
+                            lastPrice: fixToSignificantDigits(priceToday),
+                            time: new Date().getTime()
                         };
                         cryptoFollowConfig.vendor.investingOil.oneTimeFetch = modelData;
                     })
@@ -288,6 +294,9 @@ function getDataFromBCV() {
         if (
             cryptoFollowConfig.vendor.bancoCentralDeVenezuela.oneTimeFetch
                 .lastPrice === "Loading"
+                || (new Date().getTime()
+                - cryptoFollowConfig.vendor.bancoCentralDeVenezuela.oneTimeFetch.time)
+            >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
                 getPageDataFromWeb(
@@ -321,7 +330,8 @@ function getDataFromBCV() {
                                     .bancoCentralDeVenezuela.oneTimeFetch
                                     .symbol,
                             priceChangePercent: fixToSignificantDigits(changePercent),
-                            lastPrice: fixToSignificantDigits(priceToday)
+                            lastPrice: fixToSignificantDigits(priceToday),
+                            time: new Date().getTime()
                         };
                         cryptoFollowConfig.vendor.bancoCentralDeVenezuela.oneTimeFetch = modelData;
                     })

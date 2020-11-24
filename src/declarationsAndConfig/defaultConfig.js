@@ -12,6 +12,8 @@
  * - the bar config.
  * @property {JSON} barConfig.hideMode
  * - if is true mean Hide the bar on: Double click, on false hide the bar on: Mouseover.
+ * @property {JSON} barConfig.cooldownForGetPageData
+ * - cooldonw to refresh data from page in milliseconds, recomended value: 3600000
  * @property {JSON} vendor
  * - identification for vendors.
  * @property {JSON} vendor.binance
@@ -74,7 +76,8 @@
  */
 const cryptoFollowDefaultConfig = {
     barConfig: {
-        hideMode: false
+        hideMode: false,
+        cooldownForGetPageData: 3600000
     },
     vendor: {
         binance: {
