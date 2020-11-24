@@ -12,9 +12,11 @@
  * @description update the state of the switch "hide config"
  */
 function updateHideConfig(cryptoFollowLastConfig) {
-    if (cryptoFollowLastConfig.barConfig.hideMode) {
-        const switchBtn = $("#switchHide");
-        switchBtn.prop("checked", true);
+    if (typeof cryptoFollowLastConfig !== "undefined") {
+        if (cryptoFollowLastConfig.barConfig.hideMode) {
+            const switchBtn = $("#switchHide");
+            switchBtn.prop("checked", true);
+        }
     }
 }
 /**
