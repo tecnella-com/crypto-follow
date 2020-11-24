@@ -17,6 +17,7 @@
 getCryptoFollowLastConfigFromLocalStorage();
 if (window.location.href.indexOf("licence.html") === -1) {
     fillVendorsWithAvailablesPairs();
+    updateHideConfig();
 }
 const versionSpan = document.getElementById("version");
 versionSpan.innerText = version;
@@ -60,6 +61,18 @@ descriptionSpan.innerText = description;
     }
 })(jQuery);
 
+(function ($) {
+    const switchBtn = $("#switchHide");
+    $(switchBtn).on("change", function () {
+        if ($(this).is(":checked")) {
+            cryptoFollowLastConfig.barConfig.hideMode = $(this).is(":checked");
+        } else {
+            cryptoFollowLastConfig.barConfig.hideMode = $(this).is(":checked");
+        }
+        setConfigOnLocalStorage(cryptoFollowLastConfig);
+    });
+})(jQuery);
+
 /**
  * @namespace saveOrRemoveAssociatePair
  * @description The listener for the click event at each checkbox.
@@ -67,7 +80,7 @@ descriptionSpan.innerText = description;
  */
 (function ($) {
     try {
-        const checkboxs = $(".checkbox");
+        const checkboxs = $(".bodyContainer .checkbox");
         for (const key in checkboxs) {
             if (Object.prototype.hasOwnProperty.call(checkboxs, key)) {
                 // eslint-disable-next-line no-loop-func
@@ -101,3 +114,4 @@ descriptionSpan.innerText = description;
         console.error(`Error in Accordion logic error: ${error}`);
     }
 })(jQuery);
+

@@ -7,6 +7,18 @@
  * @author Vladimir Cusatti
  */
 
+ /**
+ * @function updateHideConfig
+ * @description update the state of the switch "hide config"
+ */
+function updateHideConfig(cryptoFollowLastConfig) {
+    if (typeof cryptoFollowLastConfig !== "undefined") {
+        if (cryptoFollowLastConfig.barConfig.hideMode) {
+            const switchBtn = $("#switchHide");
+            switchBtn.prop("checked", true);
+        }
+    }
+}
 /**
  * @function getCryptoFollowLastConfigFromLocalStorage
  * @description get __cryptoFollowConfig__ from local storage and save it in
@@ -36,6 +48,7 @@ function getCryptoFollowLastConfigFromLocalStorage() {
                         }
                     }
                 }
+                updateHideConfig(cryptoFollowLastConfig);
             }
         });
     } catch (error) {
