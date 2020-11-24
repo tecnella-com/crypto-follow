@@ -35,8 +35,7 @@ var dataToShow = {
             priceChangePercent: "Loading",
             lastPrice: "Loading"
         }
-    ],
-    time: new Date().getTime()
+    ]
 };
 
 /**
@@ -55,8 +54,7 @@ var lastData = {
             priceChangePercent: "Loading",
             lastPrice: "Loading"
         }
-    ],
-    time: new Date().getTime()
+    ]
 };
 /**
  * @var {object} bar
