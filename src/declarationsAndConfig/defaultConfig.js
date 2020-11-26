@@ -120,13 +120,19 @@ const cryptoFollowDefaultConfig = {
         }
     }
 };
+/**
+* @var {String} manifest
+* @description A global variable that contains the program manifest
+*/
+// eslint-disable-next-line no-var, no-unused-vars
+var manifest = chrome.runtime.getManifest();
 
 /**
  * @var {String} version
  * @description A global variable that contains the program version
  */
 // eslint-disable-next-line no-var, no-unused-vars
-var version = "1.0.0";
+var version = manifest.version;
 
 /**
  * @var {String} description
@@ -134,3 +140,19 @@ var version = "1.0.0";
  */
 // eslint-disable-next-line no-var, no-unused-vars
 var description = "Crypto and assets always in your browser";
+
+/**
+ * @function resetConfig
+ * @description function to restore the default configuration
+ */
+function resetConfig() {
+    console.info("--- Crypto follow instaled, setting default configuration ---");
+    try {
+        chrome.storage.sync.set(
+            { cryptoFollowConfig: JSON.stringify(cryptoFollowDefaultConfig) }, function () {
+            }
+        );
+    } catch (error) {
+        console.error(`Error in onInstallingResetConfig, error: ${error}`);
+    }
+}

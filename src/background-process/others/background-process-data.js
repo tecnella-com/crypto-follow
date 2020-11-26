@@ -21,22 +21,12 @@ function setDataOnLocalStorage(message) {
 }
 
 /**
- * @function onInstallingResetConfig
- * @description chrome.runtime.onInstallingResetConfig use this
- * callBack function to restore the default configuration 
+ * @function onInstalling
+ * @description chrome.runtime.onInstalling use this callBack function
  */
-function onInstallingResetConfig() {
-    console.info("--- Crypto follow instaled, setting default configuration ---");
-    try {
-        chrome.storage.sync.set(
-            { cryptoFollowConfig: JSON.stringify(cryptoFollowDefaultConfig) }, function () {
-            }
-        );
-    } catch (error) {
-        console.error(`Error in onInstallingResetConfig, error: ${error}`);
-    }
+function onInstalling() {
+    resetConfig();
 }
-
 /**
  * @function getConfigFromLocalStorage
  * @description get config
