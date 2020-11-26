@@ -9,7 +9,7 @@
 /* *********** listeners ************************ */
 
 /**
- *  @namespace onInstallingResetConfig
+ *  @namespace onInstallingsetTheDefaultConfig
  * @description On installing the extension reset to the default configuration.
  */
 chrome.runtime.onInstalled.addListener(onInstalling());

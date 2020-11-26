@@ -25,7 +25,7 @@ function setDataOnLocalStorage(message) {
  * @description chrome.runtime.onInstalling use this callBack function
  */
 function onInstalling() {
-    resetConfig();
+    setTheDefaultConfig();
 }
 /**
  * @function getConfigFromLocalStorage

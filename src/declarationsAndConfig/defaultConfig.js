@@ -142,10 +142,10 @@ var version = manifest.version;
 var description = "Crypto and assets always in your browser";
 
 /**
- * @function resetConfig
+ * @function setTheDefaultConfig
  * @description function to restore the default configuration
  */
-function resetConfig() {
+function setTheDefaultConfig() {
     console.info("--- Crypto follow instaled, setting default configuration ---");
     try {
         chrome.storage.sync.set(
@@ -153,6 +153,6 @@ function resetConfig() {
             }
         );
     } catch (error) {
-        console.error(`Error in onInstallingResetConfig, error: ${error}`);
+        console.error(`Error in onInstallingsetTheDefaultConfig, error: ${error}`);
     }
 }
