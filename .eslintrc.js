@@ -41,7 +41,6 @@ module.exports = {
         lastRequestDate: "writable",
         onCheckBoxClick: "writable",
         onInstalling: "writable",
-        respawnTime: "writable",
         setTheDefaultConfig: "writable",
         resetDefaultOnButtonClick: "writable",
         setConfigOnLocalStorage: "writable",

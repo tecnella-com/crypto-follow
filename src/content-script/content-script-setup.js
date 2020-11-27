@@ -61,9 +61,3 @@ var lastData = {
  * @description Contain the reference to object with id="cryptoFollowBar"
  */
 var bar;
-
-/**
- * @var {Number} respawnTime
- * @description respawn time after double click over the bar. This is represented in milliseconds.
- */
-var respawnTime = 5000;
