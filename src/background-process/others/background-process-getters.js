@@ -187,7 +187,7 @@ function getDataFromBitven() {
             >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.APIEndpoint)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.webURL)
                     .then(function (data) {
                         const priceToday = parseInt(
                             JSON.parse(data).USD_TO_BSF_RATE,
@@ -240,7 +240,7 @@ function getDataFromInvestingOil() {
             >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.APIEndpoint)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.webURL)
                     .then(function (data) {
                         const dataFromTables = $(data)
                             .find("#curr_table")
@@ -283,11 +283,10 @@ function getDataFromInvestingOil() {
 
 /**
  * @function getDataFromBCV
- * @description do a request if __cryptoFollowConfig.vendor.bancoCentralDeVenezuela.symbol__
- * is not empty, do the result scraping, and save in
- * [dataRequestedFromVendors]{@link module:background-process-setup~dataRequestedFromVendors}.
- * Also, at next try prevent the fetch and reuse the last data in __oneTimeFetch__.
- * @see [cryptoFollowConfig]{@link module:background-process-setup~cryptoFollowConfig}
+ * @description if is enabled, call the function
+ * [getPageDataFromWeb()]{@link module:background-process-getters~getPageDataFromWeb}
+ * to get the web page content from the Venezuelan´s Central Bank, and then scraping
+ * the data to get the USD vs BSS official price. The result is saved and posted.
  */
 function getDataFromBCV() {
     if (cryptoFollowConfig.vendor.bancoCentralDeVenezuela.symbol.length > 0) {
@@ -300,7 +299,7 @@ function getDataFromBCV() {
         ) {
             try {
                 getPageDataFromWeb(
-                    cryptoFollowConfig.vendor.bancoCentralDeVenezuela.APIEndpoint
+                    cryptoFollowConfig.vendor.bancoCentralDeVenezuela.webURL
                 )
                     .then(function (data) {
                         const firstRowData = $($(data).find("tr")[1]).find("td");
