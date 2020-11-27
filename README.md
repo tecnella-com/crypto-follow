@@ -118,9 +118,13 @@ You have three options to install the extension, Install from "Chrome Store", In
 3. Wait until the bar update (Approximately a minute)
 
 ### Install from Release:
-Download the "Dist Folder" and open it like developer on Chrome
+Download the Last Release and open it like developer on Chrome
 
-#### 1. Go to the Last Release and download the Dist Folder [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
+#### 1. Go to the Last Release and download it 
+1. Go to [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
+2. select the Last Releases
+3. Download Crypto-Follow-v.x.x.x.zip
+4. Extract the files
 
 #### 2. add the extension to Chrome
 1. Open your Chrome browser.
@@ -128,7 +132,7 @@ Download the "Dist Folder" and open it like developer on Chrome
 3. Select __"More Tools" > "Extensions"__
 4. In the upper right corner, activate __"Development Mode"__
 5. Select the new option __Load Unzipped__
-6. Find the Dist Folder (downloaded earlier) and select it.
+6. Find the Crypto-Follow-v.x.x.x Folder (downloaded earlier) and select it.
 7. Go to "Extension Option" and __pin the extension__
 
 #### 3. Configure on user interface
