@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/tecnella/crypto-follow-Chrome-extension.git"
+    "url": "git+ssh://git@github.com:tecnella-com/crypto-follow.git"
   },
   "keywords": [
     "crypto",
@@ -21,7 +21,7 @@
   "author": "Tecnella",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/tecnella/crypto-follow-chrome-extension/issues"
+    "url": "https://github.com/tecnella-com/crypto-follow/issues"
   },
   "homepage": "https://tecnella.com/",
   "devDependencies": {

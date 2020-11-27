@@ -10,15 +10,15 @@
  * @function getDataFromApi
  * @async
  * @description Get the symbol's data from the vendor's API, just one at a time.
- * @param {string} apiURI Endpoint URL
+ * @param {string} APIEndpoint The API Endpoint URL
  * @param {string} symbol a PAR symbol see:[Binace-doc]{@link https://binance-docs.github.io/apidocs/spot/en/#24hr-ticker-price-change-statistics} or see:[Bitfinex-doc]{@link https://docs.bitfinex.com/docs/introduction}
  * @returns {JSON} data from Apis
  */
-function getDataFromApi(apiURI, symbol) {
+function getDataFromApi(APIEndpoint, symbol) {
     return new Promise(function (resolve, reject) {
         try {
             const xhr = new XMLHttpRequest();
-            xhr.open("GET", apiURI + symbol);
+            xhr.open("GET", APIEndpoint + symbol);
             xhr.responseType = "json";
 
             xhr.onload = function () {
@@ -89,7 +89,7 @@ function getDataFromBinance() {
         if (Object.prototype.hasOwnProperty.call(cryptoFollowConfig.vendor.binance.symbol, item)) {
             try {
                 getDataFromApi(
-                    cryptoFollowConfig.vendor.binance.urlApi,
+                    cryptoFollowConfig.vendor.binance.APIEndpoint,
                     cryptoFollowConfig.vendor.binance.symbol[item]
                 )
                     // eslint-disable-next-line no-loop-func
@@ -136,7 +136,7 @@ function getDataFromBitfinex() {
         if (Object.prototype.hasOwnProperty.call(cryptoFollowConfig.vendor.bitfinex.symbol, item)) {
             try {
                 getDataFromApi(
-                    cryptoFollowConfig.vendor.bitfinex.urlApi,
+                    cryptoFollowConfig.vendor.bitfinex.APIEndpoint,
                     cryptoFollowConfig.vendor.bitfinex.symbol[item]
                 )
                     // eslint-disable-next-line no-loop-func
@@ -187,7 +187,7 @@ function getDataFromBitven() {
             >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.urlApi)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.APIEndpoint)
                     .then(function (data) {
                         const priceToday = parseInt(
                             JSON.parse(data).USD_TO_BSF_RATE,
@@ -240,7 +240,7 @@ function getDataFromInvestingOil() {
             >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.urlApi)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.APIEndpoint)
                     .then(function (data) {
                         const dataFromTables = $(data)
                             .find("#curr_table")
@@ -300,7 +300,7 @@ function getDataFromBCV() {
         ) {
             try {
                 getPageDataFromWeb(
-                    cryptoFollowConfig.vendor.bancoCentralDeVenezuela.urlApi
+                    cryptoFollowConfig.vendor.bancoCentralDeVenezuela.APIEndpoint
                 )
                     .then(function (data) {
                         const firstRowData = $($(data).find("tr")[1]).find("td");

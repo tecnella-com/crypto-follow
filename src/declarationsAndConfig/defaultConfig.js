@@ -18,19 +18,19 @@
  * - identification for vendors.
  * @property {JSON} vendor.binance
  * - identification for API's vendor Binance.
- * @property {String} vendor.binance.urlApi
+ * @property {String} vendor.binance.APIEndpoint
  * - The URL to conect to the API.
  * @property {Array} vendor.binance.symbol
  * - Contains the symbols that will be request.
  * @property {JSON} vendor.bitfinex
  * - identification for API's vendor Bitfinex.
- * @property {String} vendor.bitfinex.urlApi
+ * @property {String} vendor.bitfinex.APIEndpoint
  * - The URL to conect to the API.
  * @property {Array} vendor.bitfinex.symbol
  * - Contains the symbols that will be request.
  * @property {JSON} vendor.bitven
  * - identification for Web's vendor Bitven.
- * @property {String} vendor.bitven.urlApi
+ * @property {String} vendor.bitven.APIEndpoint
  * - The URL that will be scraping.
  * @property {Array} vendor.bitven.symbol
  * - The symbol to show and if is empty disable the vendor data fetch.
@@ -45,7 +45,7 @@
  * - contains the pair last price
  * @property {JSON} vendor.investingOil
  * - identification for Web's vendor InvestingOil.
- * @property {String} vendor.investingOil.urlApi
+ * @property {String} vendor.investingOil.APIEndpoint
  * - The URL that will be scraping
  * @property {Array} vendor.investingOil.symbol
  * - The symbol to show and if is empty disable the vendor fetch
@@ -60,7 +60,7 @@
  * - contains the pair last price
  * @property {JSON} vendor.bancoCentralDeVenezuela
  * - identification for Web's vendor Venezuela's Central Bank.
- * @property {String} vendor.bancoCentralDeVenezuela.urlApi
+ * @property {String} vendor.bancoCentralDeVenezuela.APIEndpoint
  * - The URL that will be scraping
  * @property {Array} vendor.bancoCentralDeVenezuela.symbol
  * - The symbol to show and if is empty disable the vendor fetch
@@ -81,15 +81,15 @@ const cryptoFollowDefaultConfig = {
     },
     vendor: {
         binance: {
-            urlApi: "https://api.binance.com/api/v3/ticker/24hr?symbol=",
+            APIEndpoint: "https://api.binance.com/api/v3/ticker/24hr?symbol=",
             symbol: ["BTCUSDT", "EURUSDT"]
         },
         bitfinex: {
-            urlApi: "https://api-pub.bitfinex.com/v2/tickers?symbols=",
+            APIEndpoint: "https://api-pub.bitfinex.com/v2/tickers?symbols=",
             symbol: ["tXAUT:USD"]
         },
         bitven: {
-            urlApi:
+            APIEndpoint:
                 "https://www.bitven.com/assets/js/rates.js",
             symbol: ["DolarToDay.VES"],
             oneTimeFetch: {
@@ -99,7 +99,7 @@ const cryptoFollowDefaultConfig = {
             }
         },
         investingOil: {
-            urlApi:
+            APIEndpoint:
                 "https://es.investing.com/commodities/brent-oil-historical-data",
             symbol: ["Oil.Brend"],
             oneTimeFetch: {
@@ -109,7 +109,7 @@ const cryptoFollowDefaultConfig = {
             }
         },
         bancoCentralDeVenezuela: {
-            urlApi:
+            APIEndpoint:
                 "http://www.bcv.org.ve/tasas-informativas-sistema-bancario",
             symbol: ["USD:VES.BCV"],
             oneTimeFetch: {
