@@ -30,7 +30,7 @@
  * - Contains the symbols that will be request.
  * @property {JSON} vendor.bitven
  * - identification for Web's vendor Bitven.
- * @property {String} vendor.bitven.APIEndpoint
+ * @property {String} vendor.bitven.webURL
  * - The URL that will be scraping.
  * @property {Array} vendor.bitven.symbol
  * - The symbol to show and if is empty disable the vendor data fetch.
@@ -45,7 +45,7 @@
  * - contains the pair last price
  * @property {JSON} vendor.investingOil
  * - identification for Web's vendor InvestingOil.
- * @property {String} vendor.investingOil.APIEndpoint
+ * @property {String} vendor.investingOil.webURL
  * - The URL that will be scraping
  * @property {Array} vendor.investingOil.symbol
  * - The symbol to show and if is empty disable the vendor fetch
@@ -60,7 +60,7 @@
  * - contains the pair last price
  * @property {JSON} vendor.bancoCentralDeVenezuela
  * - identification for Web's vendor Venezuela's Central Bank.
- * @property {String} vendor.bancoCentralDeVenezuela.APIEndpoint
+ * @property {String} vendor.bancoCentralDeVenezuela.webURL
  * - The URL that will be scraping
  * @property {Array} vendor.bancoCentralDeVenezuela.symbol
  * - The symbol to show and if is empty disable the vendor fetch
@@ -89,8 +89,7 @@ const cryptoFollowDefaultConfig = {
             symbol: ["tXAUT:USD"]
         },
         bitven: {
-            APIEndpoint:
-                "https://www.bitven.com/assets/js/rates.js",
+            webURL: "https://www.bitven.com/assets/js/rates.js",
             symbol: ["DolarToDay.VES"],
             oneTimeFetch: {
                 symbol: "DolarToDay.VES",
@@ -99,8 +98,7 @@ const cryptoFollowDefaultConfig = {
             }
         },
         investingOil: {
-            APIEndpoint:
-                "https://es.investing.com/commodities/brent-oil-historical-data",
+            webURL: "https://es.investing.com/commodities/brent-oil-historical-data",
             symbol: ["Oil.Brend"],
             oneTimeFetch: {
                 symbol: "Oil.Brend",
@@ -109,8 +107,7 @@ const cryptoFollowDefaultConfig = {
             }
         },
         bancoCentralDeVenezuela: {
-            APIEndpoint:
-                "http://www.bcv.org.ve/tasas-informativas-sistema-bancario",
+            webURL: "http://www.bcv.org.ve/tasas-informativas-sistema-bancario",
             symbol: ["USD:VES.BCV"],
             oneTimeFetch: {
                 symbol: "USD:VES.BCV",
