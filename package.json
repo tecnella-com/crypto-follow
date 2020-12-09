@@ -1,6 +1,6 @@
 {
   "name": "crypto-follow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Chrome extension \"crypto follow\", let u follow crypto, fiat currency and assets always in your browser",
   "main": "index.js",
   "scripts": {
