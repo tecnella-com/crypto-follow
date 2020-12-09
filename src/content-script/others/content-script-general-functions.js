@@ -6,6 +6,17 @@
  * @author Vladimir Cusatti
  */
 /**
+ * @function exist
+ * @description check if an element exist
+ * @param {Object} element any DOM element
+ */
+function exist(element) {
+    if (typeof (element) === "undefined" || element === null) {
+        return false;
+    }
+    return true;
+}
+/**
  * @function createSymbolContainer
  * @description create an element and sub-elements inside the bar
  * with an id number as id="symbol${idNum}"
@@ -52,7 +63,6 @@ function createSymbolContainer(idNum) {
     rightDiv.append(priceChangePercent);
     priceChangePercent.id = `variation${idNum}`;
     priceChangePercent.innerText = `${element.priceChangePercent}%`;
-
 }
 /**
  * @function setColorByChange
@@ -71,7 +81,7 @@ function setColorByChange(value, element) {
         element.classList.add("negativeColor");
     } else {
         element.classList.remove("negativeColor");
-    }  
+    }
 }
 /**
  * @function glowColor
@@ -193,13 +203,9 @@ function updateTheBar(data) {
     totalConfiguredItems = calculateTotalConfiguredElements();
     const element = document.getElementById("symbol1");
 
-    if (typeof (element) === "undefined" || element === null) {
+    if (!exist(element) || (totalConfiguredItems !== countOfElmentsInData)) {
         recreateBar(totalConfiguredItems);
     }
-    if (totalConfiguredItems !== countOfElmentsInData) {
-        recreateBar(totalConfiguredItems);
-    }
-
     try {
         updateElementsContents(data);
     } catch (error) {
@@ -214,7 +220,7 @@ function updateTheBar(data) {
  * @description Hide the bar temporarily and respawn at five seconds.
  * @event
  */
-function hideTheBarTemporarily() {
+function hideTheBarTemporarily(respawnTime) {
     bar.style.setProperty("display", "none", "important");
     setTimeout(() => {
         bar.style.setProperty("display", "block", "important");

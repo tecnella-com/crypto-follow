@@ -35,8 +35,7 @@ var dataToShow = {
             priceChangePercent: "Loading",
             lastPrice: "Loading"
         }
-    ],
-    time: new Date().getTime()
+    ]
 };
 
 /**
@@ -55,17 +54,10 @@ var lastData = {
             priceChangePercent: "Loading",
             lastPrice: "Loading"
         }
-    ],
-    time: new Date().getTime()
+    ]
 };
 /**
  * @var {object} bar
  * @description Contain the reference to object with id="cryptoFollowBar"
  */
 var bar;
-
-/**
- * @var {Number} respawnTime
- * @description respawn time after double click over the bar. This is represented in milliseconds.
- */
-var respawnTime = 5000;

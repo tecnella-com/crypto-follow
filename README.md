@@ -44,6 +44,14 @@ It was a step by step process:
 
 14. __Through the Development Process we did a lot of testing and fixing__ to the code, but at this point we began to spend time in selecting a license, designing a logo, selecting the colors, improving and cleaning the code, improving the __documentation__, creating a __“READ ME”__ text, creating an __“Installation Guide”__, an __“Usage Manual”__ and fixing some details before launching the solution.
 
+15. "Crypto Follow" is published in the chrome store, to allow easily downloaded and used.
+
+16. The "Notilogia" provider is broken, so we decided to change it for a more reliable provider such as Bitven.com, although the percentage variation for the pair DolarToDay.VES is lost. Also, adjustments are made to the scrapping logic of the new provider. 
+
+17. New features are added, now you can choose if The Bar hide with the mouseover function, always is possible to hide it with a double click. we see potential in allowing the user to choose between copying from the bar or only viewing it to be informed. Also, we add logic in the background that allows requests to web page providers to be updated every hour instead of just once, this forcing the update of the data even if the bar is used in computers that do not turn off or that always are in use.
+
+18. We spent time-solving other issues to create the new release.
+
 
 ## Features
 -------------------------------------------
@@ -61,7 +69,7 @@ It was a step by step process:
 
 ### Visualization of fiat currencies like:
 * Euro vs Tether Dollar, __"EURUSDT"__ from Binances.
-* Dollar vs Bolivar, __DolarToDay.VES__ from Notilogia (DolarToDay).
+* Dollar vs Bolivar, __DolarToDay.VES__ from Bitven (DolarToDay).
 * Dollar vs Bolivar, __USD:VES.BCV__ from Venezuela’s Central Bank (Official Rate).
 
 ### Visualization of cryptocurrencies like:
@@ -93,8 +101,8 @@ It was a step by step process:
 The extension gets the data through the [binance-api](https://binance-docs.github.io/apidocs/spot/en/#introduction "Go to binances api introduction" )
 #### Bitfinex:
 The extension gets the data through the [Bitfinex-api](https://docs.bitfinex.com/docs/introduction "Go to binances api introduction" )
-#### Notilogia:
-The extension gets the data from the web portal [Notilogia.com](https://www.notilogia.com/2020/09/precio-dolar-paralelo.html "Go to notilogia hitoric price")
+#### Bitven:
+The extension gets the data from the web portal [Bitven.com](https://www.bitven.com/2020/09/precio-dolar-paralelo.html "Go to Bitven hitoric price")
 #### Investing:
 The extension gets the data from the web portal [Es.investing.com](https://es.investing.com/commodities/brent-oil-historical-data "Go to brent-oil-historical-data")
 #### Venezuela’s Central Bank:
@@ -116,9 +124,13 @@ You have three options to install the extension, Install from "Chrome Store", In
 3. Wait until the bar update (Approximately a minute)
 
 ### Install from Release:
-Download the "Dist Folder" and open it like developer on Chrome
+Download the Last Release and open it like developer on Chrome
 
-#### 1. Go to the Last Release and download the Dist Folder [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
+#### 1. Go to the Last Release and download it 
+1. Go to [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
+2. Select the Last Releases
+3. Download Crypto-Follow-v.x.x.x.zip
+4. Extract the files
 
 #### 2. add the extension to Chrome
 1. Open your Chrome browser.
@@ -126,7 +138,7 @@ Download the "Dist Folder" and open it like developer on Chrome
 3. Select __"More Tools" > "Extensions"__
 4. In the upper right corner, activate __"Development Mode"__
 5. Select the new option __Load Unzipped__
-6. Find the Dist Folder (downloaded earlier) and select it.
+6. Find the Crypto-Follow-v.x.x.x Folder (downloaded earlier) and select it.
 7. Go to "Extension Option" and __pin the extension__
 
 #### 3. Configure on user interface

@@ -34,11 +34,11 @@ var cryptoFollowLastConfig = cryptoFollowDefaultConfig;
  * - The url to conect to the api
  * @property {Array<String>} vendor.bitfinex.symbol
  * - Contains the symbols that can be obtained, see:[docs.bitfinex]{@link https://docs.bitfinex.com/docs/introduction}
- * @property {JSON} vendor.notilogia
+ * @property {JSON} vendor.bitven
  * - A web vendor [getPageDataFromWeb]{@link module:background-process-getters~getPageDataFromWeb}
- * @property {String} vendor.notilogia.name
+ * @property {String} vendor.bitven.name
  * - The name of vendor
- * @property {Array<String>} vendor.notilogia.symbol
+ * @property {Array<String>} vendor.bitven.symbol
  * - Contains a name to show in user interface
  * @property {JSON} vendor.investingOil
  * - A web vendor
@@ -86,8 +86,8 @@ let symbolsAvailables = {
                 "tXRPUSD"
             ]
         },
-        notilogia: {
-            name: "Notilogia",
+        bitven: {
+            name: "Bitven",
             symbol: ["DolarToDay.VES"]
         },
         investingOil: {

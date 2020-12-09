@@ -10,15 +10,15 @@
  * @function getDataFromApi
  * @async
  * @description Get the symbol's data from the vendor's API, just one at a time.
- * @param {string} apiURI Endpoint URL
+ * @param {string} APIEndpoint The API Endpoint URL
  * @param {string} symbol a PAR symbol see:[Binace-doc]{@link https://binance-docs.github.io/apidocs/spot/en/#24hr-ticker-price-change-statistics} or see:[Bitfinex-doc]{@link https://docs.bitfinex.com/docs/introduction}
  * @returns {JSON} data from Apis
  */
-function getDataFromApi(apiURI, symbol) {
+function getDataFromApi(APIEndpoint, symbol) {
     return new Promise(function (resolve, reject) {
         try {
             const xhr = new XMLHttpRequest();
-            xhr.open("GET", apiURI + symbol);
+            xhr.open("GET", APIEndpoint + symbol);
             xhr.responseType = "json";
 
             xhr.onload = function () {
@@ -89,7 +89,7 @@ function getDataFromBinance() {
         if (Object.prototype.hasOwnProperty.call(cryptoFollowConfig.vendor.binance.symbol, item)) {
             try {
                 getDataFromApi(
-                    cryptoFollowConfig.vendor.binance.urlApi,
+                    cryptoFollowConfig.vendor.binance.APIEndpoint,
                     cryptoFollowConfig.vendor.binance.symbol[item]
                 )
                     // eslint-disable-next-line no-loop-func
@@ -136,7 +136,7 @@ function getDataFromBitfinex() {
         if (Object.prototype.hasOwnProperty.call(cryptoFollowConfig.vendor.bitfinex.symbol, item)) {
             try {
                 getDataFromApi(
-                    cryptoFollowConfig.vendor.bitfinex.urlApi,
+                    cryptoFollowConfig.vendor.bitfinex.APIEndpoint,
                     cryptoFollowConfig.vendor.bitfinex.symbol[item]
                 )
                     // eslint-disable-next-line no-loop-func
@@ -171,58 +171,54 @@ function getDataFromBitfinex() {
 }
 
 /**
- * @function getDataFromNotilogia
- * @description do a request if __cryptoFollowConfig.vendor.notilogia.symbol__
+ * @function getDataFromBitven
+ * @description do a request if __cryptoFollowConfig.vendor.bitven.symbol__
  * is not empty, do the result scraping, and save in
  * [dataRequestedFromVendors]{@link module:background-process-setup~dataRequestedFromVendors}.
  * Also, at next try prevent the fetch and reuse the last data in __oneTimeFetch__.
  * @see [cryptoFollowConfig]{@link module:background-process-setup~cryptoFollowConfig}
  */
-function getDataFromNotilogia() {
-    if (cryptoFollowConfig.vendor.notilogia.symbol.length > 0) {
+function getDataFromBitven() {
+    if (cryptoFollowConfig.vendor.bitven.symbol.length > 0) {
         if (
-            cryptoFollowConfig.vendor.notilogia.oneTimeFetch.lastPrice
+            cryptoFollowConfig.vendor.bitven.oneTimeFetch.lastPrice
             === "Loading"
+            || (new Date().getTime() - cryptoFollowConfig.vendor.bitven.oneTimeFetch.time)
+            >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.notilogia.urlApi)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.bitven.webURL)
                     .then(function (data) {
-                        const dataFromTablesCenter = $(data)
-                            .find("tr>td>center")
-                            .parent()
-                            .contents();
                         const priceToday = parseInt(
-                            $(dataFromTablesCenter[1]).contents()[0].data,
+                            JSON.parse(data).USD_TO_BSF_RATE,
                             10
                         );
-                        const priceYesterday = parseInt(
-                            $(dataFromTablesCenter[3]).contents()[0].data,
-                            10
-                        );
+                        const priceYesterday = priceToday;
                         const change = priceToday - priceYesterday;
                         const changePercent = (change / priceYesterday) * 100;
                         const modelData = {
                             symbol: "DolarToDay.VES",
                             priceChangePercent: fixToSignificantDigits(changePercent),
-                            lastPrice: fixToSignificantDigits(priceToday)
+                            lastPrice: fixToSignificantDigits(priceToday),
+                            time: new Date().getTime()
                         };
-                        cryptoFollowConfig.vendor.notilogia.oneTimeFetch = modelData;
+                        cryptoFollowConfig.vendor.bitven.oneTimeFetch = modelData;
                     })
                     .catch(function (error) {
                         errorHandlerFunctions.onGetPageDataFromWeb.EmptyModelCriteria(
                             error,
-                            cryptoFollowConfig.vendor.notilogia
+                            cryptoFollowConfig.vendor.bitven
                         );
                     });
             } catch (error) {
                 errorHandlerFunctions.onGetPageDataFromWeb.EmptyModelCriteria(
                     error,
-                    cryptoFollowConfig.vendor.notilogia
+                    cryptoFollowConfig.vendor.bitven
                 );
             }
         }
         dataRequestedFromVendors.data.push(
-            cryptoFollowConfig.vendor.notilogia.oneTimeFetch
+            cryptoFollowConfig.vendor.bitven.oneTimeFetch
         );
     }
 }
@@ -240,9 +236,11 @@ function getDataFromInvestingOil() {
         if (
             cryptoFollowConfig.vendor.investingOil.oneTimeFetch.lastPrice
             === "Loading"
+            || (new Date().getTime() - cryptoFollowConfig.vendor.investingOil.oneTimeFetch.time)
+            >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
-                getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.urlApi)
+                getPageDataFromWeb(cryptoFollowConfig.vendor.investingOil.webURL)
                     .then(function (data) {
                         const dataFromTables = $(data)
                             .find("#curr_table")
@@ -259,7 +257,8 @@ function getDataFromInvestingOil() {
                                 cryptoFollowConfig.vendor.investingOil
                                     .oneTimeFetch.symbol,
                             priceChangePercent: fixToSignificantDigits(changePercent),
-                            lastPrice: fixToSignificantDigits(priceToday)
+                            lastPrice: fixToSignificantDigits(priceToday),
+                            time: new Date().getTime()
                         };
                         cryptoFollowConfig.vendor.investingOil.oneTimeFetch = modelData;
                     })
@@ -284,21 +283,23 @@ function getDataFromInvestingOil() {
 
 /**
  * @function getDataFromBCV
- * @description do a request if __cryptoFollowConfig.vendor.bancoCentralDeVenezuela.symbol__
- * is not empty, do the result scraping, and save in
- * [dataRequestedFromVendors]{@link module:background-process-setup~dataRequestedFromVendors}.
- * Also, at next try prevent the fetch and reuse the last data in __oneTimeFetch__.
- * @see [cryptoFollowConfig]{@link module:background-process-setup~cryptoFollowConfig}
+ * @description if is enabled, call the function
+ * [getPageDataFromWeb()]{@link module:background-process-getters~getPageDataFromWeb}
+ * to get the web page content from the Venezuelan´s Central Bank, and then scraping
+ * the data to get the USD vs BSS official price. The result is saved and posted.
  */
 function getDataFromBCV() {
     if (cryptoFollowConfig.vendor.bancoCentralDeVenezuela.symbol.length > 0) {
         if (
             cryptoFollowConfig.vendor.bancoCentralDeVenezuela.oneTimeFetch
                 .lastPrice === "Loading"
+                || (new Date().getTime()
+                - cryptoFollowConfig.vendor.bancoCentralDeVenezuela.oneTimeFetch.time)
+            >= cryptoFollowConfig.barConfig.cooldownForGetPageData
         ) {
             try {
                 getPageDataFromWeb(
-                    cryptoFollowConfig.vendor.bancoCentralDeVenezuela.urlApi
+                    cryptoFollowConfig.vendor.bancoCentralDeVenezuela.webURL
                 )
                     .then(function (data) {
                         const firstRowData = $($(data).find("tr")[1]).find("td");
@@ -328,7 +329,8 @@ function getDataFromBCV() {
                                     .bancoCentralDeVenezuela.oneTimeFetch
                                     .symbol,
                             priceChangePercent: fixToSignificantDigits(changePercent),
-                            lastPrice: fixToSignificantDigits(priceToday)
+                            lastPrice: fixToSignificantDigits(priceToday),
+                            time: new Date().getTime()
                         };
                         cryptoFollowConfig.vendor.bancoCentralDeVenezuela.oneTimeFetch = modelData;
                     })
@@ -357,7 +359,7 @@ function getDataFromBCV() {
  * [dataRequestedFromVendors]{@link module:background-process-setup~dataRequestedFromVendors}
  * and call [getDataFromBinance]{@link module:background-process-getters~getDataFromBinance},
  * [getDataFromBitfitnex]{@link module:background-process-getters~getDataFromBitfinex},
- * [getDataFromNotilogia]{@link module:background-process-getters~getDataFromNotilogia},
+ * [getDataFromBitven]{@link module:background-process-getters~getDataFromBitven},
  * [getDataFromInvestingOil]{@link module:background-process-getters~getDataFromInvestingOil},
  * [getDataFromBCV]{@link module:background-process-getters~getDataFromBCV}
  */
@@ -367,7 +369,7 @@ function getFromVendors() {
     };
     getDataFromBinance();
     getDataFromBitfinex();
-    getDataFromNotilogia();
+    getDataFromBitven();
     getDataFromInvestingOil();
     getDataFromBCV();
 

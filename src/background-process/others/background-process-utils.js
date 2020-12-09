@@ -7,12 +7,12 @@
  */
 
 /**
- * @function toThousandsCommasFormat
+ * @function toThousandsCommaFormat
  * @description Convert a number to a string with thousand separator comma
  * @param {number} x The number without comma
  * @returns {string} The number converted to a string with thousand separator comma
  */
-function toThousandsCommasFormat(x) {
+function toThousandsCommaFormat(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -29,7 +29,7 @@ function fixToSignificantDigits(val) {
         if (val >= 999 || val <= -999) {
             // the number required comma
             num = num.toFixed(2);
-            num = toThousandsCommasFormat(num);
+            num = toThousandsCommaFormat(num);
         } else if (val <= 1 && val >= -1) {
             // the number is little
             num = num.toPrecision(3);

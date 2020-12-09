@@ -22,7 +22,7 @@ setInterval(() => {
     getConfigFromLocalStorage();
     getDataToShowFromLocalStorage();
     updateTheBar(dataToShow);
-}, respawnTime);
+}, cryptoFollowConfig.barConfig.respawnTime);
 
 /* ***************** listeners ***************************** */
 /**
@@ -31,7 +31,13 @@ setInterval(() => {
  * @fires hideTheBarTemporarily
  */
 bar.ondblclick = () => {
-    hideTheBarTemporarily();
+    hideTheBarTemporarily(cryptoFollowConfig.barConfig.respawnTime);
+};
+
+bar.onmouseover = function () {
+    if (!cryptoFollowConfig.barConfig.hideMode) {
+        hideTheBarTemporarily(cryptoFollowConfig.barConfig.respawnTime);
+    }
 };
 
 //# Resumen del archivo
