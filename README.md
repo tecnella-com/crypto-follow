@@ -44,7 +44,13 @@ It was a step by step process:
 
 14. __Through the Development Process we did a lot of testing and fixing__ to the code, but at this point we began to spend time in selecting a license, designing a logo, selecting the colors, improving and cleaning the code, improving the __documentation__, creating a __“READ ME”__ text, creating an __“Installation Guide”__, an __“Usage Manual”__ and fixing some details before launching the solution.
 
-15. Notilogia broken.
+15. "Crypto Follow" is published in the chrome store, to allow easily downloaded and used.
+
+16. The "Notilogia" provider is broken, so we decided to change it for a more reliable provider such as Bitven.com, although the percentage variation for the pair DolarToDay.VES is lost. Also, adjustments are made to the scrapping logic of the new provider. 
+
+17. New features are added, now you can choose if The Bar hide with the mouseover function, always is possible to hide it with a double click. we see potential in allowing the user to choose between copying from the bar or only viewing it to be informed. Also, we add logic in the background that allows requests to web page providers to be updated every hour instead of just once, this forcing the update of the data even if the bar is used in computers that do not turn off or that always are in use.
+
+18. We spent time-solving other issues to create the new release.
 
 
 ## Features
@@ -122,7 +128,7 @@ Download the Last Release and open it like developer on Chrome
 
 #### 1. Go to the Last Release and download it 
 1. Go to [Crypto follow, Github Repository](https://github.com/tecnella-com/crypto-follow "Go to Repository")
-2. select the Last Releases
+2. Select the Last Releases
 3. Download Crypto-Follow-v.x.x.x.zip
 4. Extract the files
 
